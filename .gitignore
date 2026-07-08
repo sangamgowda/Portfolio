@@ -1,0 +1,8 @@
+# Dependency directories
+node_modules/
+
+# Build outputs
+dist/
+
+# User-requested file types to ignore
+*.md
