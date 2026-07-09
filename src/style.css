@@ -604,6 +604,16 @@ h3 {
   color: var(--text-mute);
   background: rgba(255, 255, 255, 0.02);
   transition: all .2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.chip-icon {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  opacity: .9;
 }
 
 .chip:hover {
@@ -884,6 +894,193 @@ footer {
   letter-spacing: .04em;
   border-top: 1px solid var(--line);
   margin-top: 40px;
+}
+
+/* ================= ABOUT ================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-text p {
+  font-size: 15px;
+  color: var(--text-mute);
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+.about-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.about-quote {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 34px 28px;
+  position: relative;
+}
+
+.about-quote .mark {
+  font-family: var(--disp);
+  font-size: 44px;
+  color: var(--cyan);
+  line-height: 1;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.about-quote p {
+  font-family: var(--disp);
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.about-quote .attribution {
+  display: block;
+  margin-top: 20px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* ================= EXPERIENCE — grouped company timeline ================= */
+.tl-item.tl-group .tl-role {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tl-item.tl-group .tl-role .tl-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: var(--cyan);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 3px 10px;
+  text-transform: uppercase;
+}
+
+.tl-subtrack {
+  margin-top: 22px;
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.tl-subitem {
+  position: relative;
+}
+
+.tl-subitem::before {
+  content: '';
+  position: absolute;
+  left: -29px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--amber);
+}
+
+.tl-subdate {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--amber);
+  letter-spacing: .06em;
+}
+
+.tl-subrole {
+  font-family: var(--disp);
+  font-size: 16px;
+  color: #fff;
+  margin-top: 4px;
+}
+
+/* ================= BUILDS — split groups ================= */
+.build-group {
+  margin-bottom: 60px;
+}
+
+.build-group:last-child {
+  margin-bottom: 0;
+}
+
+.build-group-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.build-group-head h3 {
+  font-family: var(--disp);
+  font-size: 15px;
+  letter-spacing: .03em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.build-group-head .note {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.proj-link {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--cyan);
+  transition: color .2s ease;
+}
+
+.proj-link:hover {
+  color: var(--amber);
+}
+
+.proj-card.proj-empty {
+  border-style: dashed;
+  border-color: var(--line-strong);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.proj-card.proj-empty:hover {
+  transform: none;
+  border-color: var(--amber);
+  box-shadow: none;
+}
+
+.proj-card.proj-empty h3 {
+  color: var(--text-mute);
 }
 
 @media (prefers-reduced-motion: reduce) {
