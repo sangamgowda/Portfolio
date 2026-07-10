@@ -22,33 +22,36 @@
   <div class="bg-glow c2"></div>
   <div class="progress" id="progress"></div>
 
-  <!-- ============ BRAND MARK (top-left) ============ -->
-  <a href="#hero" class="brand-mark">SANGAM</a>
+  <!-- ============ HEADER CONTAINER ============ -->
+  <div class="header-container">
+    <!-- ============ BRAND MARK (top-left) ============ -->
+    <a href="#hero" class="brand-mark">SANGAM</a>
 
-  <!-- ============ THEME TOGGLE (top-right) ============ -->
-  <button id="themeToggle" class="theme-toggle" aria-label="Toggle light / dark theme" title="Toggle theme">
+    <!-- ============ THEME TOGGLE (top-right) ============ -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle light / dark theme" title="Toggle theme">
     <span class="toggle-track">
+
       <span class="toggle-thumb">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6" />
-          <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-            <line x1="12" y1="1.6" x2="12" y2="4" />
-            <line x1="12" y1="20" x2="12" y2="22.4" />
-            <line x1="1.6" y1="12" x2="4" y2="12" />
-            <line x1="20" y1="12" x2="22.4" y2="12" />
-            <line x1="4.5" y1="4.5" x2="6.2" y2="6.2" />
-            <line x1="17.8" y1="17.8" x2="19.5" y2="19.5" />
-            <line x1="4.5" y1="19.5" x2="6.2" y2="17.8" />
-            <line x1="17.8" y1="6.2" x2="19.5" y2="4.5" />
-          </g>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.6"
-            stroke-linejoin="round" />
-        </svg>
-      </span>
-    </span>
+
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6" />
+      <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <line x1="12" y1="1.6" x2="12" y2="4" />
+        <line x1="12" y1="20" x2="12" y2="22.4" />
+        <line x1="1.6" y1="12" x2="4" y2="12" />
+        <line x1="20" y1="12" x2="22.4" y2="12" />
+        <line x1="4.5" y1="4.5" x2="6.2" y2="6.2" />
+        <line x1="17.8" y1="17.8" x2="19.5" y2="19.5" />
+        <line x1="4.5" y1="19.5" x2="6.2" y2="17.8" />
+        <line x1="17.8" y1="6.2" x2="19.5" y2="4.5" />
+      </g>
+    </svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.6"
+        stroke-linejoin="round" />
+    </svg>
   </button>
+  </div>
 
   <nav class="dock" id="dock">
     <button data-target="hero"><span class="dot"></span>HOME</button>
@@ -94,7 +97,7 @@
         <div class="hero-photo reveal in">
           <div class="photo-wrap" id="heroPhotoSlot">
             <div class="ring"></div>
-            <div class="photo-slot-placeholder"></div>
+            <img src="/profile.jpg" alt="Portrait of Sangam" class="profile-img">
           </div>
         </div>
       </div>
@@ -151,7 +154,6 @@
         </div>
 
         <div class="about-quote hud">
-          <div class="about-photo-slot" id="aboutPhotoSlot"></div>
           <span class="mark">“</span>
           <p>Technology is just an expensive hobby until it actually changes how a problem is solved.</p>
           <span class="attribution">— 2 am Philosophy</span>
@@ -386,7 +388,7 @@
 
           <label class="field">
             <span class="field-label">Your Email</span>
-            <input type="email" id="cfEmail" name="email" placeholder="you@example.com" required>
+            <input type="email" id="cfEmail" name="email" placeholder="you@example.com">
           </label>
 
           <label class="field">
@@ -458,12 +460,6 @@
   </section>
 
   <footer>© 2026 P. SANGAM — DESIGNED &amp; BUILT WITH INTENT</footer>
-
-  <!-- Floating photo used for the hero -> about scroll animation -->
-  <div class="floating-photo" id="floatingPhoto">
-    <img src="/profile.jpg" alt="Portrait of Sangam" id="portraitImg">
-    <div class="status-chip" id="floatingStatusChip"><span class="pulse"></span>ONLINE</div>
-  </div>
 
   <!-- ================= PROJECT MODAL: Urja Setu ================= -->
   <div class="modal-backdrop" id="projModalBackdrop"></div>

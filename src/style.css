@@ -152,12 +152,20 @@ button {
   transition: width .1s linear;
 }
 
-/* ---------- brand mark (top-left) ---------- */
-.brand-mark {
+/* ---------- header container ---------- */
+.header-container {
   position: fixed;
   top: 22px;
   left: 28px;
+  right: 24px;
   z-index: 95;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ---------- brand mark (top-left) ---------- */
+.brand-mark {
   font-family: var(--disp);
   font-weight: 700;
   font-size: 15px;
@@ -171,57 +179,33 @@ button {
 }
 
 @media (max-width: 640px) {
-  .brand-mark {
+  .header-container {
     left: 20px;
+    right: 18px;
+  }
+  
+  .brand-mark {
     font-size: 13px;
   }
 }
 
 /* ---------- theme toggle (top-right) ---------- */
 .theme-toggle {
-  position: fixed;
-  top: 18px;
-  right: 24px;
-  z-index: 95;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 8px;
+  transition: all .2s ease;
 }
 
-.toggle-track {
-  display: flex;
-  align-items: center;
-  width: 52px;
-  height: 28px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  background: var(--bg-panel);
-  padding: 3px;
-  transition: background .3s ease, border-color .3s ease;
+.theme-toggle:hover {
+  transform: translateY(-2px);
 }
 
-.toggle-thumb {
+.theme-toggle svg {
   width: 20px;
   height: 20px;
-  border-radius: 50%;
-  background: var(--cyan);
-  color: #04140F;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 10px var(--cyan-soft);
-  transform: translateX(0);
-  transition: transform .35s cubic-bezier(.4, 0, .2, 1), background .3s ease;
-}
-
-:root.light .toggle-thumb {
-  transform: translateX(24px);
-}
-
-.toggle-thumb svg {
-  width: 13px;
-  height: 13px;
+  color: var(--text);
 }
 
 .icon-moon {
@@ -234,12 +218,6 @@ button {
 
 :root.light .icon-moon {
   display: block;
-}
-
-@media (max-width: 640px) {
-  .theme-toggle {
-    right: 18px;
-  }
 }
 
 /* ---------- layout helpers ---------- */
@@ -516,12 +494,15 @@ h3 {
   }
 }
 
-/* the actual visible circle now lives inside .floating-photo (see below);
-   this placeholder just reserves the layout space inside the ring */
-.photo-slot-placeholder {
+/* the actual visible circle now lives inside .photo-wrap */
+.profile-img {
   position: absolute;
   inset: 10px;
   border-radius: 50%;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.03);
 }
 
 /* ---------- floating photo (hero -> about scroll animation) ---------- */
@@ -1627,6 +1608,20 @@ footer {
 
 @media (max-width: 1024px) {
   .dock {
+    display:none;
+  }
+
+  .dock .rail {
+    width: 1px;
+    height: 20px;
+  }
+
+  .dock button {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+
+  .dock button .dot {
     display: none;
   }
 }

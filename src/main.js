@@ -125,81 +125,6 @@ document.addEventListener('scroll', updateDock);
 updateDock();
 
 // ============================================================
-// Floating photo: smooth hero -> about scroll-linked animation
-// ============================================================
-const heroSlot = document.getElementById('heroPhotoSlot');
-const aboutSlot = document.getElementById('aboutPhotoSlot');
-const floatingPhoto = document.getElementById('floatingPhoto');
-const heroSection = document.getElementById('hero');
-
-let heroBox = null;
-let aboutBox = null;
-
-function measurePhotoRects() {
-  if (!heroSlot || !aboutSlot) return;
-  const sy = window.scrollY;
-  const h = heroSlot.getBoundingClientRect();
-  const a = aboutSlot.getBoundingClientRect();
-  heroBox = { top: h.top + sy, left: h.left, width: h.width, height: h.height };
-  aboutBox = { top: a.top + sy, left: a.left, width: a.width, height: a.height };
-}
-
-function lerp(a, b, t) {
-  return a + (b - a) * t;
-}
-
-function updateFloatingPhoto() {
-  if (!heroBox || !aboutBox || !floatingPhoto || !heroSection) return;
-
-  const sy = window.scrollY;
-  const vh = window.innerHeight;
-  const heroBottom = heroSection.getBoundingClientRect().bottom;
-
-  // progress 0 -> photo sits in the hero slot
-  // progress 1 -> photo has arrived at the about slot
-  let progress = 1 - Math.max(0, Math.min(1, heroBottom / vh));
-  progress = Math.max(0, Math.min(1, progress));
-
-  // ease the progress slightly for a smoother feel
-  const eased = progress * progress * (3 - 2 * progress);
-
-  const top = lerp(heroBox.top, aboutBox.top, eased) - sy;
-  const left = lerp(heroBox.left, aboutBox.left, eased);
-  const width = lerp(heroBox.width, aboutBox.width, eased);
-  const height = lerp(heroBox.height, aboutBox.height, eased);
-
-  floatingPhoto.style.top = `${top}px`;
-  floatingPhoto.style.left = `${left}px`;
-  floatingPhoto.style.width = `${width}px`;
-  floatingPhoto.style.height = `${height}px`;
-  floatingPhoto.style.opacity = '1';
-  floatingPhoto.classList.toggle('docked', progress > 0.65);
-}
-
-let rafId = null;
-function scheduleUpdate() {
-  if (rafId) return;
-  rafId = requestAnimationFrame(() => {
-    updateFloatingPhoto();
-    rafId = null;
-  });
-}
-
-window.addEventListener('load', () => {
-  measurePhotoRects();
-  updateFloatingPhoto();
-});
-window.addEventListener('resize', () => {
-  measurePhotoRects();
-  updateFloatingPhoto();
-});
-document.addEventListener('scroll', scheduleUpdate);
-
-// initial measure (in case images/fonts are already loaded)
-measurePhotoRects();
-updateFloatingPhoto();
-
-// ============================================================
 // Core Stack — cursor-driven bubble expand (only one open)
 //
 // Bug fix: the old version used mouseenter on each bubble.
@@ -330,11 +255,13 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    const name = document.getElementById('cfName').value.trim();
+    const phone = document.getElementById('cfPhone').value.trim();
     const email = document.getElementById('cfEmail').value.trim();
     const message = document.getElementById('cfMessage').value.trim();
 
     const subject = encodeURIComponent('Contact from portfolio');
-    const body = encodeURIComponent(`From: ${email}\n\n${message}`);
+    const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\n${message}`);
 
     window.location.href = `mailto:sangamgowda64@gmail.com?subject=${subject}&body=${body}`;
   });
