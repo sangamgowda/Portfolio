@@ -1,0 +1,150 @@
+/* =========================================================
+   Responsive overrides — imported last so these win.
+   Also neutralizes the stale 3D solar block left in index.css
+   (which forced a fixed height on mobile and clipped the scene).
+   ========================================================= */
+
+/* ---- solar scene must size to its content, never clip ---- */
+.solar-scene {
+  height: auto !important;
+  perspective: none !important;
+  min-height: 0 !important;
+}
+
+/* ============ breakpoints ============ */
+
+/* tablets / small laptops */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 118px 0 56px;
+  }
+}
+
+/* large phones */
+@media (max-width: 640px) {
+  .hero {
+    padding: 104px 0 44px;
+  }
+
+  .sec {
+    padding: 72px 0;
+  }
+
+  .sec-head {
+    margin-bottom: 38px;
+  }
+
+  .about-quote {
+    padding: 26px 20px;
+  }
+
+  .contact-layout {
+    gap: 22px;
+  }
+
+  .tl-role {
+    font-size: 18px;
+  }
+
+  .project-modal {
+    width: min(560px, 92vw);
+  }
+}
+
+/* small phones */
+@media (max-width: 480px) {
+  .wrap {
+    padding: 0 18px;
+  }
+
+  .hero h1 {
+    line-height: 1.02;
+  }
+
+  .proj-card {
+    padding: 24px 20px;
+  }
+
+  .proj-card h3 {
+    font-size: 17px;
+  }
+
+  .contact-form {
+    padding: 26px 22px;
+  }
+
+  .modal-scroll {
+    padding: 28px 18px 22px;
+  }
+
+  .footer {
+    font-size: 10px;
+  }
+
+  .strip .cell .v {
+    font-size: 15px;
+  }
+
+  .info-pop {
+    padding: 14px 14px;
+  }
+
+  .info-pop-blurb {
+    font-size: 11.5px;
+  }
+}
+
+/* very small phones */
+@media (max-width: 380px) {
+  .wrap {
+    padding: 0 14px;
+  }
+
+  .hero {
+    padding: 96px 0 38px;
+  }
+
+  .sec {
+    padding: 60px 0;
+  }
+
+  .cta-row {
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 12px 18px;
+    font-size: 12px;
+  }
+
+  .social-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .social-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .modal-scroll {
+    padding: 24px 14px 18px;
+  }
+
+  .proj-card {
+    padding: 22px 18px;
+  }
+}
+
+/* prevent any accidental horizontal scroll from glows / fixed art */
+@media (max-width: 900px) {
+  .bg-glow.c1 {
+    width: 380px;
+    height: 380px;
+  }
+
+  .bg-glow.c2 {
+    width: 420px;
+    height: 420px;
+  }
+}

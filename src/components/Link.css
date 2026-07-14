@@ -1,0 +1,78 @@
+/* ---------- contact fields: theme-matched text & placeholder ---------- */
+.field input,
+.field textarea {
+  color: var(--text);
+  caret-color: var(--cyan);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--text-dim);
+  opacity: .85;
+}
+
+/* ---------- themed toast (replaces native alert popups) ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 300;
+  max-width: min(440px, 90vw);
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 18px;
+  border-radius: 12px;
+  background: var(--bg-panel-2);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.45;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .5);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateX(-50%) translateY(20px);
+  animation: toastIn .32s cubic-bezier(.2, .8, .3, 1) forwards;
+}
+
+.toast.success {
+  border-color: var(--cyan);
+}
+
+.toast.error {
+  border-color: var(--amber);
+}
+
+.toast-dot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.toast.success .toast-dot {
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+}
+
+.toast.error .toast-dot {
+  background: var(--amber);
+  box-shadow: 0 0 10px var(--amber);
+}
+
+@keyframes toastIn {
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .toast {
+    bottom: 18px;
+    font-size: 11.5px;
+    padding: 12px 14px;
+  }
+}
