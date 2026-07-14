@@ -1,8 +1,8 @@
 # Dependency directories
-node_modules/
+/node_modules
 
 # Build outputs
-dist/
+/dist
 .env
 
 # User-requested file types to ignore
