@@ -9,24 +9,17 @@ export default function About() {
 
         <div className="about-grid reveal">
           <div className="about-text">
-            <p>I am an engineer who believes <strong>good engineering is not measured by the complexity of a
-                system, but by how cleanly it solves a real-world problem.</strong> My focus extends far beyond
-              training machine learning models — I design and build the intelligent systems that connect abstract
-              research with practical, scalable execution.</p>
+            <p>I’ve always believed that the true measure of engineering isn't how complex a system is, but how 
+              beautifully it solves a real problem. I don't interest myself in simply training machine learning 
+              models to let them sit in a sandbox. Instead, I focus on the engine room of AI—architecting resilient, 
+              scalable systems that connect abstract research with the messy, chaotic reality of production data. From 
+              Computer Vision to Generative AI, my goal is to make the underlying technology so seamless that it becomes 
+              completely invisible to the end user.</p>
 
-            <p>My expertise spans the complete lifecycle of AI products — encompassing <strong>Applied AI, Computer
-                Vision, Machine Learning, Deep Learning, and Generative AI (LLMs/RAG).</strong> Rather than just
-              implementing algorithms in a sandbox, I focus on the engine room of engineering: architecting solutions
-              that are purposeful, resilient, and built to handle the chaos of production data.</p>
-
-            <p>What defines my approach is systems thinking. I believe true elegance isn't a complex algorithm —
-              it's a chaotic puzzle solved so cleanly that the technology becomes invisible. This mindset lets me
-              operate at the intersection of engineering and product strategy, ensuring every technical decision
-              serves a clear business objective.</p>
-
-            <p>As a self-driven engineer and aspiring AI Architect, I thrive on technical challenges that force
-              continuous evolution — building high-impact, intelligent products that bridge cutting-edge innovation
-              with practical, real-world outcomes.</p>
+            <p>What drives me is systems thinking. I love operating right at the intersection of engineering and product 
+              strategy, ensuring that every architectural line we draw serves a clear, high-impact business objective. 
+              As an aspiring AI Architect, I don't build just to chase the tech hype; I build to turn cutting-edge innovation 
+              into purposeful, elegant execution that stands the test of scale.</p>
           </div>
 
           <div className="about-quote hud">
