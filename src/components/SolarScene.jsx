@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
+import useMatchMedia from '../hooks/useMatchMedia.js';
 
 const SYSTEMS = [
   {
@@ -42,8 +43,8 @@ const SYSTEMS = [
 const ROWS = 5;
 const COLS = 5;
 const DAMAGED = new Set([6, 13, 19]);
-const CANVAS_W = 800;
-const CANVAS_H = 560;
+const CANVAS_W = 900;
+const CANVAS_H = 640;
 
 function buildPath(yFn) {
   let d = '';
@@ -58,21 +59,97 @@ function buildPath(yFn) {
 const POWER_PATH = buildPath((t) => 104 - Math.sin(t * Math.PI * 2) * 24 - 14 * Math.sin(t * Math.PI * 6));
 const PRICE_PATH = buildPath((t) => 52 + Math.sin(t * Math.PI * 2 + 1) * 28 + 10 * Math.sin(t * Math.PI * 9));
 
+function InfoPop({ active, activeSys }) {
+  if (!active || !activeSys) return null;
+
+  return (
+    <div className="info-pop" key={active}>
+      <div className="info-pop-head" style={{ color: activeSys.color }}>
+        <span className="info-pop-dot" style={{ background: activeSys.color }}></span>
+        {activeSys.label}
+      </div>
+      <p className="info-pop-blurb">{activeSys.blurb}</p>
+
+      {active === 'forecast' && (
+        <>
+          <div className="fc-head">
+            <span className="fc-legend">
+              <span className="fc-key power">Power (MW)</span>
+              <span className="fc-key price">Price (₹/unit)</span>
+            </span>
+          </div>
+          <svg className="fc-chart" viewBox="0 0 300 150" preserveAspectRatio="none">
+            <line className="fc-axis" x1="0" y1="6" x2="0" y2="150" />
+            <line className="fc-axis" x1="0" y1="150" x2="300" y2="150" />
+            {[30, 60, 90, 120].map((y) => (
+              <line key={y} x1="0" y1={y} x2="300" y2={y} className="fc-grid" />
+            ))}
+            <g className="fc-scroll">
+              <path className="fc-line power" d={POWER_PATH} />
+              <path className="fc-line price" d={PRICE_PATH} />
+            </g>
+            <text className="fc-axis-label" x="248" y="146">Time →</text>
+            <text className="fc-axis-label" x="6" y="14">↕</text>
+          </svg>
+        </>
+      )}
+
+      {active === 'siya' && (
+        <>
+          <ol className="siya-steps">
+            <li style={{ '--i': 0 }}><b>Ingest</b> live telemetry &amp; forecasts</li>
+            <li style={{ '--i': 1 }}><b>Reason</b> over plant state with LLM</li>
+            <li style={{ '--i': 2 }}><b>Advise</b> yield, storage &amp; risk</li>
+            <li style={{ '--i': 3 }}><b>Act</b> operator confirms the action</li>
+          </ol>
+          <div className="siya-chat">
+            <div className="bubble q">Charge or discharge the battery now?</div>
+            <div className="bubble a">Discharge — price peaks in ~40 min. Capture arbitrage, then recharge overnight.</div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function SolarScene({ project }) {
   const sceneRef = useRef(null);
   const wrapRef = useRef(null);
   const [active, setActive] = useState(null);
   const [scale, setScale] = useState(1);
+  const canHover = useMatchMedia('(hover: hover) and (pointer: fine)');
 
-  // scale the fixed-size canvas to fit the modal width so nothing is clipped
+  const hoverProps = (id) =>
+    canHover
+      ? { onMouseEnter: () => setActive(id), onMouseLeave: () => setActive(null) }
+      : {};
+
+  // Fit the fixed canvas to the available width (desktop → phone)
   useLayoutEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
-    const update = () => setScale(Math.min(1, el.clientWidth / CANVAS_W));
+
+    const update = () => {
+      const w = el.clientWidth;
+      if (w <= 0) return;
+      setScale(Math.min(1, w / CANVAS_W));
+    };
+
     update();
     const ro = new ResizeObserver(update);
     ro.observe(el);
-    return () => ro.disconnect();
+
+    // Catch late layout when the modal finishes opening
+    const t1 = requestAnimationFrame(update);
+    const t2 = window.setTimeout(update, 50);
+    window.addEventListener('resize', update);
+
+    return () => {
+      ro.disconnect();
+      cancelAnimationFrame(t1);
+      window.clearTimeout(t2);
+      window.removeEventListener('resize', update);
+    };
   }, []);
 
   const show = (...ids) => active === null || ids.includes(active);
@@ -82,26 +159,42 @@ export default function SolarScene({ project }) {
 
   return (
     <div className="solar-scene" ref={sceneRef}>
-      <div className="solar-hint">Explore the project — click each component to see how Urja Setu works</div>
+      <div className="solar-hint">
+        {canHover
+          ? 'Explore the project — hover or click each component to see how Urja Setu works'
+          : 'Explore the project — tap each component to see how Urja Setu works'}
+      </div>
 
       <div className="solar-inner">
-      <div className="solar-canvas-wrap" ref={wrapRef} style={{ height: CANVAS_H * scale }}>
+      <div className="solar-stage">
+      <div
+        className="solar-canvas-wrap"
+        ref={wrapRef}
+        style={{
+          height: CANVAS_H * scale,
+          '--scene-scale': String(scale),
+        }}
+      >
         <div
           className="solar-canvas"
-          style={{ transform: `scale(${scale})` }}
+          style={{
+            transform: `scale(${scale})`,
+            width: CANVAS_W,
+            height: CANVAS_H,
+          }}
         >
           {/* site background */}
           <div className="site-ground"></div>
 
           {/* connector lines */}
-          <svg className="connectors" viewBox="0 0 800 560" preserveAspectRatio="none">
-            <path d="M384 240 L510 165" />
-            <path d="M510 165 L690 149" />
-            <path d="M204 390 C 300 430, 360 395, 430 365" />
+          <svg className="connectors" viewBox={`0 0 ${CANVAS_W} ${CANVAS_H}`} preserveAspectRatio="none">
+            <path d="M430 260 L550 175" />
+            <path d="M550 175 L760 160" />
+            <path d="M230 420 C 330 460, 400 425, 480 400" />
           </svg>
 
           {/* sun (decorative) */}
-          <div className="comp comp-sun" style={{ left: 'auto', right: '22px', top: '16px' }}>
+          <div className="comp comp-sun" style={{ left: 'auto', right: '28px', top: '18px' }}>
             <svg viewBox="0 0 64 64" className="ico ico-sun">
               <g className="sun-rays">
                 {Array.from({ length: 12 }).map((_, i) => (
@@ -115,10 +208,9 @@ export default function SolarScene({ project }) {
           {/* solar field */}
           <div
             className={`comp comp-field ${show('twin', 'forecast', 'grid', 'maintenance') ? '' : 'dim'} ${active === 'twin' ? 'active' : ''} ${active === 'maintenance' ? 'cleaning' : ''}`}
-            style={{ left: '24px', top: '90px', width: '360px', height: '300px' }}
+            style={{ left: '28px', top: '88px', width: '400px', height: '330px' }}
             onClick={() => select('twin')}
-            onMouseEnter={() => setActive('twin')}
-            onMouseLeave={() => setActive(null)}
+            {...hoverProps('twin')}
           >
             <div className="field-panels">
               {Array.from({ length: ROWS }).map((_, r) => (
@@ -138,10 +230,9 @@ export default function SolarScene({ project }) {
           {/* power house: inverter + battery */}
           <div
             className={`comp comp-house ${show('twin', 'storage') ? '' : 'dim'} ${active === 'storage' ? 'active' : ''}`}
-            style={{ left: '430px', top: '90px', width: '160px', height: '150px' }}
+            style={{ left: '470px', top: '88px', width: '210px', height: '180px' }}
             onClick={() => select('storage')}
-            onMouseEnter={() => setActive('storage')}
-            onMouseLeave={() => setActive(null)}
+            {...hoverProps('storage')}
           >
             <span className="comp-label">Inverter + Battery</span>
             <div className="house-row">
@@ -166,10 +257,9 @@ export default function SolarScene({ project }) {
           {/* grid */}
           <div
             className={`comp comp-grid ${show('twin', 'grid') ? '' : 'dim'} ${active === 'grid' ? 'active' : ''}`}
-            style={{ left: '620px', top: '84px', width: '140px', height: '130px' }}
+            style={{ left: '710px', top: '88px', width: '160px', height: '160px' }}
             onClick={() => select('grid')}
-            onMouseEnter={() => setActive('grid')}
-            onMouseLeave={() => setActive(null)}
+            {...hoverProps('grid')}
           >
             <span className="comp-label">Grid</span>
             <svg viewBox="0 0 64 64" className="ico ico-grid">
@@ -182,10 +272,9 @@ export default function SolarScene({ project }) {
           {/* SIYA */}
           <div
             className={`comp comp-siya ${show('twin', 'siya') ? '' : 'dim'} ${active === 'siya' ? 'active' : ''}`}
-            style={{ left: '430px', top: '300px', width: '190px', height: '130px' }}
+            style={{ left: '470px', top: '310px', width: '240px', height: '160px' }}
             onClick={() => select('siya')}
-            onMouseEnter={() => setActive('siya')}
-            onMouseLeave={() => setActive(null)}
+            {...hoverProps('siya')}
           >
             <span className="comp-label">SIYA</span>
             <svg viewBox="0 0 64 48" className="ico ico-siya">
@@ -199,10 +288,9 @@ export default function SolarScene({ project }) {
           {/* forecast */}
           <div
             className={`comp comp-forecast ${show('twin', 'forecast') ? '' : 'dim'} ${active === 'forecast' ? 'active' : ''}`}
-            style={{ left: '24px', top: '430px', width: '280px', height: '110px' }}
+            style={{ left: '28px', top: '470px', width: '320px', height: '140px' }}
             onClick={() => select('forecast')}
-            onMouseEnter={() => setActive('forecast')}
-            onMouseLeave={() => setActive(null)}
+            {...hoverProps('forecast')}
           >
             <span className="comp-label">Forecasting</span>
             <svg viewBox="0 0 200 50" className="ico ico-chart" preserveAspectRatio="none">
@@ -214,10 +302,9 @@ export default function SolarScene({ project }) {
           {/* maintenance */}
           <div
             className={`comp comp-maint ${show('twin', 'maintenance') ? '' : 'dim'} ${active === 'maintenance' ? 'active' : ''}`}
-            style={{ left: '330px', top: '432px', width: '150px', height: '106px' }}
+            style={{ left: '370px', top: '480px', width: '180px', height: '130px' }}
             onClick={() => select('maintenance')}
-            onMouseEnter={() => setActive('maintenance')}
-            onMouseLeave={() => setActive(null)}
+            {...hoverProps('maintenance')}
           >
             <span className="comp-label">Maintenance</span>
             <svg viewBox="0 0 48 48" className="ico ico-maint">
@@ -232,58 +319,15 @@ export default function SolarScene({ project }) {
               <span className="flow-dot" key={i} style={{ animationDelay: `${i * 1.1}s` }}></span>
             ))}
           </div>
-
-          {/* floating info card — appears on hover/select for every component */}
-          {active && activeSys && (
-            <div className="info-pop" key={active}>
-              <div className="info-pop-head" style={{ color: activeSys.color }}>
-                <span className="info-pop-dot" style={{ background: activeSys.color }}></span>
-                {activeSys.label}
-              </div>
-              <p className="info-pop-blurb">{activeSys.blurb}</p>
-
-              {active === 'forecast' && (
-                <>
-                  <div className="fc-head">
-                    <span className="fc-legend">
-                      <span className="fc-key power">Power (MW)</span>
-                      <span className="fc-key price">Price (₹/unit)</span>
-                    </span>
-                  </div>
-                  <svg className="fc-chart" viewBox="0 0 300 150" preserveAspectRatio="none">
-                    <line className="fc-axis" x1="0" y1="6" x2="0" y2="150" />
-                    <line className="fc-axis" x1="0" y1="150" x2="300" y2="150" />
-                    {[30, 60, 90, 120].map((y) => (
-                      <line key={y} x1="0" y1={y} x2="300" y2={y} className="fc-grid" />
-                    ))}
-                    <g className="fc-scroll">
-                      <path className="fc-line power" d={POWER_PATH} />
-                      <path className="fc-line price" d={PRICE_PATH} />
-                    </g>
-                    <text className="fc-axis-label" x="248" y="146">Time →</text>
-                    <text className="fc-axis-label" x="6" y="14">↕</text>
-                  </svg>
-                </>
-              )}
-
-              {active === 'siya' && (
-                <>
-                  <ol className="siya-steps">
-                    <li style={{ '--i': 0 }}><b>Ingest</b> live telemetry &amp; forecasts</li>
-                    <li style={{ '--i': 1 }}><b>Reason</b> over plant state with LLM</li>
-                    <li style={{ '--i': 2 }}><b>Advise</b> yield, storage &amp; risk</li>
-                    <li style={{ '--i': 3 }}><b>Act</b> operator confirms the action</li>
-                  </ol>
-                  <div className="siya-chat">
-                    <div className="bubble q">Charge or discharge the battery now?</div>
-                    <div className="bubble a">Discharge — price peaks in ~40 min. Capture arbitrage, then recharge overnight.</div>
-                  </div>
-                </>
-              )}
-            </div>
-          )}
         </div>
       </div>
+
+      {/* overlay info card on pointer devices (inside stage, not scaled) */}
+      {canHover && <InfoPop active={active} activeSys={activeSys} />}
+      </div>
+
+      {/* panel info card on touch — full-size text, below the canvas */}
+      {!canHover && <InfoPop active={active} activeSys={activeSys} />}
 
       {/* live readout */}
       <div className="solar-readout">
