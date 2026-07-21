@@ -19,10 +19,10 @@ export default function Work() {
                 <div className="tl-subdate">FEB 2026 — PRESENT</div>
                 <div className="tl-subrole">AI Software Engineer</div>
                 <ul className="tl-list">
-                  <li>Solar Intelligence Platform — power forecasting, digital twin simulation, and LLM-based support
-                    for power trading and corrective maintenance</li>
-                  <li>Agri-Soil Intelligence — soil health prediction and crop recommendation from sensor data</li>
-                  <li>Technical presentations for leadership &amp; product strategy</li>
+                  <li>Solar Intelligence Platform — LightGBM &amp; LSTM forecasting on 12 years of historical data, reaching 89% / 80% evaluation scores with drift-monitored retraining triggers</li>
+                  <li>Rule-based risk logic + LLM summarization layer turning forecast &amp; sensor data into natural-language operational recommendations</li>
+                  <li>Real-time CV pipeline (YOLOv8, InsightFace, FAISS) for face detection, distance estimation &amp; object detection — integrated into an STM32 hardware pipeline for a client defense application</li>
+                  <li>Agri-Soil Intelligence — GSM-based IoT ingestion with a threshold-based soil health &amp; crop advisory engine across two pilot sites, no historical data required</li>
                 </ul>
               </div>
 
