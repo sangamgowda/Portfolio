@@ -8,42 +8,28 @@ export default function Work() {
         </div>
 
         <div className="timeline reveal">
-          <div className="tl-item tl-group">
+          <div className="tl-item">
             <div className="tl-date">JUL 2025 — PRESENT</div>
-            <div className="tl-role">EAGE Technologies India Pvt. Ltd. <span className="tl-badge">Intern → Full-Time</span>
-            </div>
-            <div className="tl-co">Bengaluru</div>
-
-            <div className="tl-subtrack">
-              <div className="tl-subitem">
-                <div className="tl-subdate">FEB 2026 — PRESENT</div>
-                <div className="tl-subrole">AI Software Engineer</div>
-                <ul className="tl-list">
-                  <li>Solar Intelligence Platform — LightGBM &amp; LSTM forecasting on 12 years of historical data, reaching 89% / 80% evaluation scores with drift-monitored retraining triggers</li>
-                  <li>Rule-based risk logic + LLM summarization layer turning forecast &amp; sensor data into natural-language operational recommendations</li>
-                  <li>Real-time CV pipeline (YOLOv8, InsightFace, FAISS) for face detection, distance estimation &amp; object detection — integrated into an STM32 hardware pipeline for a client defense application</li>
-                  <li>Agri-Soil Intelligence — GSM-based IoT ingestion with a threshold-based soil health &amp; crop advisory engine across two pilot sites, no historical data required</li>
-                </ul>
-              </div>
-
-              <div className="tl-subitem">
-                <div className="tl-subdate">JUL 2025 — JAN 2026</div>
-                <div className="tl-subrole">R&amp;D Intern</div>
-                <ul className="tl-list">
-                  <li>ML/DL R&amp;D across predictive analytics, computer vision &amp; forecasting</li>
-                  <li>Model evaluation through structured experimentation &amp; performance validation</li>
-                </ul>
-              </div>
-            </div>
+            <div className="tl-role">AI Software Engineer</div>
+            <div className="tl-co">EAGE Technologies India Pvt. Ltd. · Bengaluru, KA</div>
+            <ul className="tl-list">
+              <li>Built and benchmarked LightGBM and LSTM forecasting models for solar power output using 12 years of location-based historical data, reaching evaluation scores of 89% and 80% respectively, and designed retraining triggers and performance-ratio-based drift monitoring.</li>
+              <li>Architected an agentic decision pipeline integrating LightGBM/LSTM forecasts with rule-based risk logic and LLM function calling, generating real-time operational directives and automated risk alerts for solar assets.</li>
+              <li>Built a real-time computer vision pipeline (YOLOv8, InsightFace, FAISS) for face detection, distance estimation, and object detection, engineered as an independent software pipeline, with STM32 hardware connected to the system to complete the end-to-end hardware-software pipeline for a client defense application.</li>
+              <li>Designed an IoT-to-cloud Agri-Soil Intelligence engine under zero-historical-data constraints, engineering cold-start threshold logic and location-based climate API pipelines for 2 pilot locations.</li>
+              <li>Interfaced directly with client stakeholders and engineering leads to translate complex operational needs into technical specifications and deploying pilot systems in live customer environments.</li>
+              <li>Conducted applied research and development of machine learning and deep learning solutions across predictive analytics, computer vision, and forecasting use cases.</li>
+              <li>Evaluated model performance through experimentation and data analysis to guide solution design decisions.</li>
+            </ul>
           </div>
 
           <div className="tl-item">
             <div className="tl-date">SEP 2024 — JUN 2025</div>
             <div className="tl-role">AI &amp; Frontend Intern</div>
-            <div className="tl-co">Code Nimbus Solutions Pvt. Ltd. · Bengaluru</div>
+            <div className="tl-co">Code Nimbus Solutions Pvt. Ltd. · Bengaluru, KA</div>
             <ul className="tl-list">
-              <li>Facial recognition pipelines — deep learning + embeddings</li>
-              <li>UI for AI model output visualization &amp; workflows</li>
+              <li>Built AI-powered facial recognition pipelines using deep learning and embedding extraction techniques.</li>
+              <li>Developed user interfaces for AI applications, enabling visualization of model outputs and operational workflows.</li>
             </ul>
           </div>
         </div>

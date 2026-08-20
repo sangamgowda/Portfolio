@@ -5,46 +5,58 @@ export const stackGroups = [
       'Machine Learning',
       'Deep Learning',
       'Computer Vision',
-      'CNNs',
       'Transformers',
       'Time-Series Forecasting',
-      'Predictive Analytics',
+      'LightGBM',
+      'LSTM',
       { label: 'OpenCV', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg' },
-      'YOLO'
+      'YOLOv8'
     ]
   },
   {
-    label: 'Generative AI',
+    label: 'AI & Agentic Systems',
     chips: [
-      'LLMs',
+      'Agentic Workflows',
       'LangChain',
-      'RAG',
-      'AI Agents',
-      'Prompt Engineering',
-      'Vector Databases',
-      'Agentic Workflows'
+      'LangGraph',
+      'CrewAI',
+      'Model Context Protocol (MCP)',
+      'Tool Calling / Function Calling',
+      'RAG Systems',
+      'Vector Databases (FAISS)',
+      'Prompt Engineering & Evaluation'
     ]
   },
   {
-    label: 'Systems',
+    label: 'Tools & Environments',
     chips: [
-      'AI Solution Design',
-      'System Design',
-      'MLOps',
-      'Model Lifecycle',
+      'Cursor',
+      'Claude API',
+      'Antigravity',
+      'Hermes',
       { label: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
-      { label: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
       { label: 'FastAPI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg' },
+      { label: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
       'CI/CD'
     ]
   },
   {
-    label: 'Languages',
+    label: 'Consultative & Delivery',
+    chips: [
+      'Client Technical Demos',
+      'Requirements Gathering',
+      'Agile/Scrum',
+      'Stakeholder Communication'
+    ]
+  },
+  {
+    label: 'Software & Systems',
     chips: [
       { label: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
-      { label: 'C', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg' },
+      { label: 'ReactJS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+      { label: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
       'SQL',
-      { label: 'ReactJS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' }
+      { label: 'GraphQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg' }
     ]
   }
 ];
