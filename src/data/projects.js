@@ -74,6 +74,7 @@ export const projects = [
     tags: ['Agentic RAG', 'SQL Guardrails', 'LLM Evals'],
     modalTags: ['LangGraph', 'MCP', 'Hybrid Search', 'PostgreSQL · pgvector', 'Langfuse', 'LLM-as-Judge', 'FastAPI', 'Docker'],
     eyebrow: 'BUILD / OS-01 · INDEPENDENT',
+    scene: 'evops',
     hasIso: false,
     body: [
       "EV support teams manually trace why a vehicle underperforms by chasing the developer who worked on it. EV Ops Copilot replaces that with an assistant that investigates the way a person would: understand the question, plan, look up data, review whether it's enough, and dig further (up to three rounds) before answering.",
