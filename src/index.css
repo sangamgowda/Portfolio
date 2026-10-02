@@ -578,7 +578,7 @@ h3 {
   background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-2));
   padding: 26px 10px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr 1.6fr;
 }
 
 @media (max-width: 760px) {
@@ -601,6 +601,10 @@ h3 {
 @media (max-width: 760px) {
   .strip .cell:nth-child(2n) {
     border-right: none;
+  }
+
+  .strip .cell:last-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -708,43 +712,38 @@ h3 {
   text-transform: uppercase;
 }
 
-/* ================= STACK — hover bubbles ================= */
+/* ================= STACK — fixed grid, no hover resizing ================= */
 .stack-bubbles {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   align-items: stretch;
 }
 
 @media (max-width: 900px) {
   .stack-bubbles {
-    flex-direction: column;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .stack-bubbles {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .stack-bubble {
-  flex: 1 1 0;
   min-width: 0;
   background: var(--bg-panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 26px 22px;
-  overflow: hidden;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  transition: flex-grow .5s cubic-bezier(.4, 0, .2, 1), background .35s ease, border-color .35s ease;
+  padding: 24px 22px;
+  transition: border-color .25s ease, background .25s ease;
 }
 
-.stack-bubble.active {
-  flex-grow: 2.4;
+.stack-bubble:hover {
   border-color: var(--cyan);
   background: linear-gradient(160deg, var(--bg-panel), var(--bg-panel-2));
-}
-
-@media (max-width: 900px) {
-  .stack-bubble.active {
-    flex-grow: 1;
-  }
 }
 
 .bubble-head {
@@ -759,31 +758,13 @@ h3 {
   letter-spacing: .12em;
   color: var(--amber);
   text-transform: uppercase;
-  white-space: nowrap;
 }
 
 .stack-bubble .chips {
   display: flex;
   flex-wrap: wrap;
   gap: 9px;
-  max-height: 0;
-  opacity: 0;
-  margin-top: 0;
-  transition: max-height .5s ease, opacity .4s ease .05s, margin-top .5s ease;
-}
-
-.stack-bubble.active .chips {
-  max-height: 400px;
-  opacity: 1;
-  margin-top: 18px;
-}
-
-/* Touch / mobile: permanently open — see .stack-bubbles--touch in responsive.css */
-.stack-bubbles--touch .stack-bubble .chips {
-  max-height: none;
-  opacity: 1;
-  margin-top: 18px;
-  transition: none;
+  margin-top: 16px;
 }
 
 .chip {
@@ -794,11 +775,10 @@ h3 {
   border: 1px solid var(--line-strong);
   color: var(--text-mute);
   background: rgba(255, 255, 255, 0.02);
-  transition: all .2s ease;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  white-space: nowrap;
 }
 
 .chip-icon {
@@ -1830,10 +1810,14 @@ footer {
   color: var(--text);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1480px) {
+  /* side dock needs ~100px of free gutter; hide it before it overlaps content */
   .dock {
-    display:none;
+    display: none;
   }
+}
+
+@media (max-width: 1024px) {
 
   .dock .rail {
     width: 1px;

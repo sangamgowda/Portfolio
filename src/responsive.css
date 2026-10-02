@@ -59,31 +59,7 @@ video {
   min-width: 0;
 }
 
-/* ---- stack: always expanded on touch / narrow screens (no accordion animation) ---- */
-.stack-bubbles--touch .stack-bubble,
-.stack-bubbles--touch .stack-bubble.is-open {
-  flex-grow: 1 !important;
-  cursor: default;
-  transition: none !important;
-  overflow: visible;
-}
-
-.stack-bubbles--touch .stack-bubble .chips {
-  max-height: none !important;
-  height: auto !important;
-  opacity: 1 !important;
-  margin-top: 18px !important;
-  transition: none !important;
-  overflow: visible;
-  visibility: visible !important;
-}
-
 @media (max-width: 900px), (hover: none) {
-  .stack-bubble .p-label {
-    font-size: clamp(11px, 2.8vw, 12px);
-    white-space: normal;
-  }
-
   .chip {
     font-size: clamp(12px, 3.2vw, 13px);
     white-space: normal;
