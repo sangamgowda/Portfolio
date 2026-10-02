@@ -734,16 +734,76 @@ h3 {
 
 .stack-bubble {
   min-width: 0;
+  position: relative;
+}
+
+.stack-card {
   background: var(--bg-panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 24px 22px;
-  transition: border-color .25s ease, background .25s ease;
+  height: 100%;
+  outline: none;
+  transition: border-color .25s ease, background .25s ease, box-shadow .25s ease;
 }
 
-.stack-bubble:hover {
-  border-color: var(--cyan);
-  background: linear-gradient(160deg, var(--bg-panel), var(--bg-panel-2));
+/* Desktop: each card rests as a compact headline and opens on its own.
+   The card floats over the page when open, so it never resizes or moves its neighbours. */
+@media (hover: hover) and (pointer: fine) and (min-width: 901px) {
+  .stack-bubbles {
+    padding-bottom: 40px;
+  }
+
+  .stack-bubble {
+    height: 72px;
+  }
+
+  .stack-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    max-height: 72px;
+    padding: 0 22px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: max-height .4s cubic-bezier(.4, 0, .2, 1), border-color .25s ease, background .25s ease, box-shadow .25s ease;
+  }
+
+  .stack-card .bubble-head {
+    flex: none;
+    height: 72px;
+  }
+
+  .stack-card .chips {
+    margin-top: 0;
+    padding-bottom: 22px;
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+
+  .stack-bubble:hover,
+  .stack-bubble:focus-within {
+    z-index: 5;
+  }
+
+  .stack-card:hover,
+  .stack-card:focus {
+    max-height: 420px;
+    border-color: var(--cyan);
+    background: linear-gradient(160deg, var(--bg-panel), var(--bg-panel-2));
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .25);
+  }
+
+  .stack-card:hover .chips,
+  .stack-card:focus .chips {
+    opacity: 1;
+    transition-delay: .1s;
+  }
 }
 
 .bubble-head {

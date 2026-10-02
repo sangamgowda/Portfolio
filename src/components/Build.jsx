@@ -33,7 +33,6 @@ export default function Build({ onOpenProject }) {
             <span key={t} className="tag">{t}</span>
           ))}
         </div>
-        {clickable && <span className="proj-link">View Project ↗</span>}
       </div>
     );
   };

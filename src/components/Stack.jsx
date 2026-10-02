@@ -12,6 +12,7 @@ export default function Stack() {
         <div className="stack-bubbles reveal" id="stackBubbles">
           {stackGroups.map((group) => (
             <div key={group.label} className="stack-bubble">
+              <div className="stack-card" tabIndex={0}>
               <div className="bubble-head">
                 <span className="p-label">{group.label}</span>
               </div>
@@ -28,6 +29,7 @@ export default function Stack() {
                     )}
                   </span>
                 ))}
+              </div>
               </div>
             </div>
           ))}
