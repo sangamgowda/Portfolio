@@ -1,6 +1,12 @@
+import { useState } from 'react';
 import { stackGroups } from '../data/stack.js';
 
 export default function Stack() {
+  /* Touch / narrow screens: tap a card to open it, tap again to close. Desktop uses CSS hover. */
+  const [openIdx, setOpenIdx] = useState(null);
+
+  const toggle = (i) => setOpenIdx((cur) => (cur === i ? null : i));
+
   return (
     <section className="sec" id="stack">
       <div className="wrap">
@@ -10,26 +16,39 @@ export default function Stack() {
         </div>
 
         <div className="stack-bubbles reveal" id="stackBubbles">
-          {stackGroups.map((group) => (
-            <div key={group.label} className="stack-bubble">
-              <div className="stack-card" tabIndex={0}>
-              <div className="bubble-head">
-                <span className="p-label">{group.label}</span>
-              </div>
-              <div className="chips">
-                {group.chips.map((chip, ci) => (
-                  <span key={ci} className="chip">
-                    {typeof chip === 'string' ? (
-                      chip
-                    ) : (
-                      <>
-                        <img className="chip-icon" src={chip.icon} alt="" />
-                        {chip.label}
-                      </>
-                    )}
-                  </span>
-                ))}
-              </div>
+          {stackGroups.map((group, i) => (
+            <div key={group.label} className={`stack-bubble${openIdx === i ? ' is-open' : ''}`}>
+              <div
+                className="stack-card"
+                tabIndex={0}
+                role="button"
+                aria-expanded={openIdx === i}
+                onClick={() => toggle(i)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggle(i);
+                  }
+                }}
+              >
+                <div className="bubble-head">
+                  <span className="p-label">{group.label}</span>
+                  <span className="bubble-toggle" aria-hidden="true"></span>
+                </div>
+                <div className="chips">
+                  {group.chips.map((chip, ci) => (
+                    <span key={ci} className="chip">
+                      {typeof chip === 'string' ? (
+                        chip
+                      ) : (
+                        <>
+                          <img className="chip-icon" src={chip.icon} alt="" />
+                          {chip.label}
+                        </>
+                      )}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

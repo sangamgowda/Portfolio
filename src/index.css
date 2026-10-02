@@ -827,36 +827,74 @@ h3 {
   }
 }
 
-.bubble-head {
-    flex: none;
-    height: 72px;
+/* Touch / narrow screens: same idea, driven by tap. Each card opens on its own and
+   pushes only the cards below it; a plus/minus marker shows it can be opened. */
+@media (max-width: 900px), (hover: none), (pointer: coarse) {
+  .stack-bubbles {
+    align-items: start;
+    gap: 12px;
   }
 
-  .stack-card .chips {
+  .stack-card {
+    display: grid;
+    grid-template-rows: auto 0fr;
+    height: auto;
+    padding: 0 18px;
+    cursor: pointer;
+    transition: grid-template-rows .5s cubic-bezier(.22, 1, .36, 1), border-color .25s ease, background .25s ease, box-shadow .25s ease;
+  }
+
+  .stack-card .bubble-head {
+    justify-content: space-between;
+    min-height: 60px;
+  }
+
+  .stack-bubble .stack-card .chips {
+    overflow: hidden;
+    min-height: 0;
     margin-top: 0;
-    padding-bottom: 22px;
     opacity: 0;
-    transition: opacity .25s ease;
+    transform: translateY(6px);
+    transition: opacity .3s ease, transform .45s cubic-bezier(.22, 1, .36, 1);
   }
 
-  .stack-bubble:hover,
-  .stack-bubble:focus-within {
-    z-index: 5;
-  }
-
-  .stack-card:hover,
-  .stack-card:focus {
-    max-height: 420px;
+  .stack-bubble.is-open .stack-card {
+    grid-template-rows: auto 1fr;
     border-color: var(--cyan);
     background: linear-gradient(160deg, var(--bg-panel), var(--bg-panel-2));
-    box-shadow: 0 18px 40px rgba(0, 0, 0, .25);
   }
 
-  .stack-card:hover .chips,
-  .stack-card:focus .chips {
+  .stack-bubble.is-open .chips {
     opacity: 1;
-    transition-delay: .1s;
+    transform: none;
+    padding-bottom: 18px;
+    transition-delay: .12s;
   }
+
+  .bubble-toggle {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    flex: none;
+  }
+  .bubble-toggle::before,
+  .bubble-toggle::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 14px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--cyan);
+    transition: transform .35s ease;
+  }
+  .bubble-toggle::after { transform: rotate(90deg); }
+  .stack-bubble.is-open .bubble-toggle::after { transform: rotate(0deg); }
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 901px) {
+  .bubble-toggle { display: none; }
 }
 
 .bubble-head {

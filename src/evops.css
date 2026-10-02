@@ -103,3 +103,13 @@
   .ev-node, .ev-loopback { animation: none; }
   .ev-packet, .ev-packet-glow { display: none; }
 }
+
+/* phones: the diagram switches to a single-column layout and fills the width */
+.evops-svg.tall {
+  min-width: 0;
+  max-width: 420px;
+}
+@media (max-width: 640px) {
+  .evops-scene { padding: 56px 10px 14px; }
+  .evops-hint { font-size: 10.5px; letter-spacing: .03em; line-height: 1.5; padding: 0 12px; }
+}
