@@ -19,7 +19,6 @@ export default function Work() {
               <li>Designed an IoT-to-cloud Agri-Soil Intelligence engine under zero-historical-data constraints, engineering cold-start threshold logic and location-based climate API pipelines for 2 pilot locations.</li>
               <li>Interfaced directly with client stakeholders and engineering leads to translate complex operational needs into technical specifications and deploying pilot systems in live customer environments.</li>
               <li>Conducted applied research and development of machine learning and deep learning solutions across predictive analytics, computer vision, and forecasting use cases.</li>
-              <li>Evaluated model performance through experimentation and data analysis to guide solution design decisions.</li>
             </ul>
           </div>
 

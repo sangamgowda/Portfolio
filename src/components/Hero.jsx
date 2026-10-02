@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 
 const PHRASES = [
-  'Builds AI systems that ship.',
+  'Builds AI systems end to end.',
   'ML -> DL -> LLMs -> Agents.',
-  'Custom AI Agents & Enterprise GenAI.',
-  'Research ideas into real products.'
+  'Agentic RAG, grounded and evaluated.',
+  'Research ideas into working prototypes.'
 ];
 
 function useTypewriter() {
@@ -62,7 +62,7 @@ export default function Hero() {
             <div className="stat-row">
               <div className="stat">
                 <div className="k">Focus</div>
-                <div className="v">AI Solution Design · Applied ML · Agentic Systems</div>
+                <div className="v">AI Solution Design · Agentic Systems · LLM Evaluation</div>
               </div>
               <div className="stat">
                 <div className="k">Base</div>
@@ -90,16 +90,16 @@ export default function Hero() {
             <div className="v">1+ Years</div>
           </div>
           <div className="cell">
-            <div className="k">Platforms Shipped</div>
-            <div className="v">2</div>
+            <div className="k">Systems Built</div>
+            <div className="v">4</div>
           </div>
           <div className="cell">
             <div className="k">Core Stack</div>
-            <div className="v">ML · LLM · CV · RAG</div>
+            <div className="v">LLM Agents · RAG · Evals · CV</div>
           </div>
           <div className="cell">
             <div className="k">Domains</div>
-            <div className="v">GenAI · Vision · Forecasting</div>
+            <div className="v">GenAI · Vision · Forecasting · EV Ops</div>
           </div>
         </div>
       </div>

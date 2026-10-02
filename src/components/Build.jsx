@@ -48,6 +48,16 @@ export default function Build({ onOpenProject }) {
 
         <div className="build-group reveal">
           <div className="build-group-head">
+            <h3>Independent Builds</h3>
+            <span className="note">Public repositories</span>
+          </div>
+          <div className="proj-grid">
+            {ossProjects.map(renderCard)}
+          </div>
+        </div>
+
+        <div className="build-group reveal">
+          <div className="build-group-head">
             <h3>Work — Product Builds</h3>
             <span className="note">Built inside EAGE Technologies · closed-source</span>
           </div>
@@ -55,16 +65,6 @@ export default function Build({ onOpenProject }) {
             {workProjects.map(renderCard)}
           </div>
         </div>
-
-        {/* <div className="build-group reveal">
-          <div className="build-group-head">
-            <h3>Open Source</h3>
-            <span className="note">Public repositories, built &amp; maintained independently</span>
-          </div>
-          <div className="proj-grid">
-            {ossProjects.map(renderCard)}
-          </div>
-        </div> */}
       </div>
     </section>
   );

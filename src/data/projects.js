@@ -5,20 +5,19 @@ export const projects = [
     group: 'work',
     title: 'Solar Intelligence Platform',
     tagline: 'Solar Management, Redefined.',
-    desc: 'LightGBM & LSTM forecasting (89% / 80% eval) plus a digital twin & LLM-assisted reasoning for operational decision support.',
-    tags: ['LightGBM · LSTM', 'Digital Twin', 'LLM Reasoning'],
-    modalTags: ['LightGBM · LSTM Forecasting', 'Digital Twin', 'LLM Reasoning · SIYA', 'Grid Management', 'Battery Storage'],
+    desc: 'LightGBM & LSTM forecasting (89% / 80% eval) with rule-based risk analysis and an LLM advisory layer for operational decision support.',
+    tags: ['LightGBM · LSTM', 'Drift Monitoring', 'LLM Advisory'],
+    modalTags: ['LightGBM · LSTM Forecasting', 'Risk Rules', 'LLM Advisory', 'Drift Monitoring'],
     eyebrow: 'BUILD / 01 · WORK',
     scene: 'solar',
     body: [
-      'Urja Setu is a solar operations platform that gives plant operators a live digital twin of the site — every panel row, inverter and battery bank mirrored in a 3D model that updates as sensor data streams in, so problems like an underperforming row or an overheating inverter surface immediately instead of during the next manual inspection.',
-      'Underneath, LightGBM and LSTM models forecast power output from twelve years of location-based historical data — reaching 89% and 80% evaluation scores respectively — with drift-monitored retraining triggers keeping accuracy steady over time. A rule-based risk layer combines with SIYA, an LLM summarization assistant, to turn that forecast and live sensor data into plain-language operational guidance instead of a spreadsheet only a specialist could read.'
+      'A forecasting and decision-support platform for solar operations. Operators get forecasted power output alongside rule-based risk analysis, so underperformance and operational risks surface early instead of during the next manual inspection.',
+      'Underneath, LightGBM and LSTM models forecast power output from twelve years of location-based historical data — reaching 89% and 80% evaluation scores respectively — with drift-monitored retraining triggers keeping accuracy steady over time. A rule-based risk layer and an LLM-generated advisory layer turn the forecasts into plain-language operational guidance instead of a spreadsheet only a specialist could read.'
     ],
     points: [
       { k: 'Forecasting', v: 'LightGBM & LSTM models trained on 12 years of historical data forecast power output at 89% / 80% evaluation scores, with drift-monitored retraining triggers.' },
-      { k: 'Digital Twin', v: "A live 3D mirror of the plant's panels, inverters and grid nodes for at-a-glance health." },
-      { k: 'LLM Decision Support', v: "Rule-based risk logic + SIYA's LLM summarization turn forecast & sensor data into natural-language operational recommendations." },
-      { k: 'Grid & Storage', v: 'Live load balancing across grid nodes plus battery charge / discharge tracking.' }
+      { k: 'Risk Analysis', v: 'Rule-based risk logic flags operational risks and generates automated alerts for solar assets.' },
+      { k: 'LLM Advisory', v: 'An LLM layer with function calling turns forecasts and risk output into natural-language operational directives.' }
     ]
   },
   {
@@ -49,37 +48,42 @@ export const projects = [
     group: 'work',
     title: 'Defense Surveillance',
     tagline: 'Vision hardened for the field.',
-    desc: 'Real-time computer vision — face detection, distance estimation & object detection — deployed on STM32 hardware for a client defense application.',
-    tags: ['Computer Vision', 'Embedded · STM32', 'IR Imaging'],
+    desc: 'Real-time computer vision — face detection, distance estimation & object detection — built as a standalone software pipeline with STM32 hardware connected, for a client defense application.',
+    tags: ['Computer Vision', 'STM32 Integration', 'IR Imaging'],
     modalTags: ['YOLOv8', 'InsightFace', 'FAISS', 'STM32', 'IR Detection'],
     eyebrow: 'BUILD / 03 · WORK',
     hasIso: false,
     body: [
       'A real-time computer vision system built for a client defense application, integrating pretrained YOLOv8 for object and face detection, InsightFace for facial embeddings, and FAISS for fast similarity search — running face detection, distance estimation, and object detection, including against IR imagery, in a single pipeline.',
-      'The vision stack is deployed on STM32 embedded hardware as part of a full hardware-software integration pipeline, so detection and distance estimation run directly on the target device rather than on a separate compute layer.'
+      'The vision stack is engineered as an independent software pipeline, with STM32 embedded hardware connected to the system to complete the end-to-end hardware-software pipeline.'
     ],
     points: [
       { k: 'Detection', v: 'YOLOv8-based face and object detection, including on IR imagery.' },
       { k: 'Recognition', v: 'InsightFace embeddings matched via FAISS for fast identity search.' },
       { k: 'Distance Estimation', v: 'Estimates subject distance in real time alongside detection.' },
-      { k: 'Embedded Deployment', v: 'Runs on STM32 hardware as part of an integrated hardware-software pipeline.' }
+      { k: 'Hardware Integration', v: 'STM32 embedded hardware is connected to the software pipeline to complete the hardware-software system.' }
     ]
   },
   {
-    id: 'oss',
+    id: 'evops',
     index: 'BUILD / OS-01',
     group: 'oss',
-    title: 'Your Next Open-Source Build',
-    tagline: '',
-    desc: "This slot is reserved for a public repository — a library, tool, or experiment you've built and maintained in the open. Share the repo name, description, and stack, and it goes straight in here.",
-    tags: ['Add Repo'],
-    modalTags: [],
-    eyebrow: 'BUILD / OS-01 · OPEN SOURCE',
-    empty: true,
+    title: 'EV Ops Copilot',
+    tagline: 'Answers you can trace.',
+    desc: 'Agentic RAG assistant for EV ops teams. It diagnoses vehicle issues and answers sales questions from telemetry and documents, with every claim cited and every query guarded.',
+    tags: ['Agentic RAG', 'SQL Guardrails', 'LLM Evals'],
+    modalTags: ['LangGraph', 'MCP', 'Hybrid Search', 'PostgreSQL · pgvector', 'Langfuse', 'LLM-as-Judge', 'FastAPI', 'Docker'],
+    eyebrow: 'BUILD / OS-01 · INDEPENDENT',
     hasIso: false,
     body: [
-      "This slot is reserved for a public repository — a library, tool, or experiment you've built and maintained in the open. Share the repo name, description, and stack, and it goes straight in here."
+      "EV support teams manually trace why a vehicle underperforms by chasing the developer who worked on it. EV Ops Copilot replaces that with an assistant that investigates the way a person would: understand the question, plan, look up data, review whether it's enough, and dig further (up to three rounds) before answering.",
+      "It compares live telemetry against model baselines, explains causes from service bulletins through hybrid search with re-ranking, and cites every point to its source. It also says what's missing instead of guessing."
     ],
-    points: []
+    points: [
+      { k: 'Grounded Answers', v: 'Every claim links to the query or document passage behind it, and partial answers are clearly marked.' },
+      { k: 'SQL Guardrails', v: 'AST validation, a calibrated cost gate, and a read-only role with a timeout on every generated query.' },
+      { k: 'Evaluation', v: 'A golden dataset with hallucination trap cases, LLM-as-judge scoring, and regression comparison between runs.' },
+      { k: 'Reliability & Cost', v: 'Model tiering with a fallback behind a circuit breaker, rate-paced calls, Langfuse tracing, and Docker/CI deployment.' }
+    ]
   }
 ];
