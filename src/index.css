@@ -747,34 +747,87 @@ h3 {
   transition: border-color .25s ease, background .25s ease, box-shadow .25s ease;
 }
 
-/* Desktop: each card rests as a compact headline and opens on its own.
-   The card floats over the page when open, so it never resizes or moves its neighbours. */
+/* Desktop: cards rest as compact headlines. The hovered card swells and its neighbours
+   yield sideways while the row below slides down, so nothing is ever covered. */
 @media (hover: hover) and (pointer: fine) and (min-width: 901px) {
   .stack-bubbles {
-    padding-bottom: 40px;
+    --rest: 72px;
+    --open-1: 275px;
+    --open-2: 172px;
+    --flow: .65s cubic-bezier(.22, 1, .36, 1);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: var(--rest) var(--rest);
+    align-items: start;
+    transition: grid-template-columns var(--flow), grid-template-rows var(--flow);
   }
 
   .stack-bubble {
-    height: 72px;
+    height: var(--rest);
+    transition: height var(--flow);
   }
 
   .stack-card {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: auto;
-    max-height: 72px;
+    height: 100%;
     padding: 0 22px;
     overflow: hidden;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    transition: max-height .4s cubic-bezier(.4, 0, .2, 1), border-color .25s ease, background .25s ease, box-shadow .25s ease;
   }
 
   .stack-card .bubble-head {
+    height: var(--rest);
+  }
+
+  .stack-card .p-label {
+    line-height: var(--rest);
+  }
+
+  .stack-card .chips {
+    margin-top: 0;
+    padding-bottom: 22px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .3s ease, transform .5s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .stack-bubble:hover .stack-card,
+  .stack-card:focus {
+    border-color: var(--cyan);
+    background: linear-gradient(160deg, var(--bg-panel), var(--bg-panel-2));
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .18);
+  }
+
+  .stack-bubble:hover .chips,
+  .stack-card:focus .chips {
+    opacity: 1;
+    transform: none;
+    transition-delay: .18s;
+  }
+
+  /* hovered card grows in its own row; its row-mates keep their height and give up width */
+  .stack-bubble:nth-child(-n+3):hover,
+  .stack-bubble:nth-child(-n+3):focus-within { height: var(--open-1); }
+  .stack-bubble:nth-child(n+4):hover,
+  .stack-bubble:nth-child(n+4):focus-within { height: var(--open-2); }
+
+  .stack-bubbles:has(.stack-bubble:nth-child(-n+3):is(:hover, :focus-within)) {
+    grid-template-rows: var(--open-1) var(--rest);
+  }
+  .stack-bubbles:has(.stack-bubble:nth-child(n+4):is(:hover, :focus-within)) {
+    grid-template-rows: var(--rest) var(--open-2);
+  }
+
+  .stack-bubbles:has(.stack-bubble:nth-child(3n+1):is(:hover, :focus-within)) {
+    grid-template-columns: 1.5fr .75fr .75fr;
+  }
+  .stack-bubbles:has(.stack-bubble:nth-child(3n+2):is(:hover, :focus-within)) {
+    grid-template-columns: .75fr 1.5fr .75fr;
+  }
+  .stack-bubbles:has(.stack-bubble:nth-child(3n):is(:hover, :focus-within)) {
+    grid-template-columns: .75fr .75fr 1.5fr;
+  }
+}
+
+.bubble-head {
     flex: none;
     height: 72px;
   }
