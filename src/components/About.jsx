@@ -9,17 +9,18 @@ export default function About() {
 
         <div className="about-grid reveal">
           <div className="about-text">
-            <p>I'm an AI engineer who likes building the whole thing, from the model to the pipeline to the problem
-              it's meant to solve. At EAGE Technologies I worked as an individual contributor in a small team, taking
-              forecasting, computer vision, and IoT systems from a blank page to working prototypes and pilots, often
-              with no historical data and no senior AI guidance to lean on. That taught me to learn fast, design
-              carefully, and be honest about what a system can and can't do yet.</p>
+            <p>Most AI looks brilliant in a demo and falls apart the first time real data shows up. That gap is what
+              pulled me in. My first real problems came with no historical data and no senior engineer down the hall,
+              so I learned to start from the problem, not the model. Forecasting solar output from twelve years of
+              history, reading soil through sensors in a field, spotting objects in infrared frames: different
+              problems, same question underneath. What does this system need to know, and how will I know when it's
+              wrong?</p>
 
-            <p>Lately my focus is making LLM systems trustworthy. My latest build, EV Ops Copilot, is an agentic RAG
-              assistant that investigates in steps, cites every claim to its source, guards every database query, and
-              says "I don't know" when the data doesn't support an answer — with an evaluation suite that catches
-              regressions before they ship. I'm working toward becoming an AI architect by building depth in exactly
-              this: reliable, observable, grounded AI.</p>
+            <p>That question is where I'm headed. I want to build AI that people can actually lean on: agents that
+              reason in steps, show their sources, and say "I don't know" instead of guessing. Every system I build
+              carries the same habit: test it, trace it, and know its limits before anyone else finds them. The long
+              game is to architect systems like that at scale. For now, I build each one end to end, and I keep it
+              honest.</p>
           </div>
 
           <div className="about-quote hud">

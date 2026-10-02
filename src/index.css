@@ -872,25 +872,21 @@ h3 {
   }
 
   .bubble-toggle {
-    position: relative;
-    width: 14px;
-    height: 14px;
+    width: 20px;
+    height: 20px;
     flex: none;
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: .75;
+    transition: transform .5s cubic-bezier(.22, 1, .36, 1), opacity .3s ease;
   }
-  .bubble-toggle::before,
-  .bubble-toggle::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 6px;
-    width: 14px;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--cyan);
-    transition: transform .35s ease;
+  .stack-bubble.is-open .bubble-toggle {
+    transform: rotate(180deg);
+    opacity: 1;
   }
-  .bubble-toggle::after { transform: rotate(90deg); }
-  .stack-bubble.is-open .bubble-toggle::after { transform: rotate(0deg); }
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 901px) {

@@ -33,7 +33,9 @@ export default function Stack() {
               >
                 <div className="bubble-head">
                   <span className="p-label">{group.label}</span>
-                  <span className="bubble-toggle" aria-hidden="true"></span>
+                  <svg className="bubble-toggle" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 9.5 L12 15.5 L18 9.5" />
+                  </svg>
                 </div>
                 <div className="chips">
                   {group.chips.map((chip, ci) => (
