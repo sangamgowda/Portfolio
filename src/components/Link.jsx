@@ -121,7 +121,7 @@ export default function Link() {
           </form>
 
           <div className="contact-side">
-            <a className="btn primary resume-btn" href="/Sangam-Resume.pdf" download>Download Resume ↓</a>
+            <a className="btn primary resume-btn" href="/resume.pdf" download="Sangam_Resume.pdf">Download Resume ↓</a>
 
             <div className="side-cards">
               <div className="c-card">

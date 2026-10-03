@@ -9,17 +9,17 @@ export default function About() {
 
         <div className="about-grid reveal">
           <div className="about-text">
-            <p>I’ve always believed that the true measure of engineering isn't how complex a system is, but how 
-              beautifully it solves a real problem. I don't interest myself in simply training machine learning 
-              models to let them sit in a sandbox. Instead, I focus on the engine room of AI—architecting resilient, 
-              scalable systems that connect abstract research with the messy, chaotic reality of production data. From 
-              Computer Vision to Generative AI, my goal is to make the underlying technology so seamless that it becomes 
-              completely invisible to the end user.</p>
+            <p>I'm an AI engineer who likes building the whole thing, from the model to the pipeline to the problem
+              it's meant to solve. At EAGE Technologies I worked as an individual contributor in a small team, taking
+              forecasting, computer vision, and IoT systems from a blank page to working prototypes and pilots, often
+              with no historical data and no senior AI guidance to lean on. That taught me to learn fast, design
+              carefully, and be honest about what a system can and can't do yet.</p>
 
-            <p>What drives me is systems thinking. I love operating right at the intersection of engineering and product 
-              strategy, ensuring that every architectural line we draw serves a clear, high-impact business objective. 
-              As an aspiring AI Architect, I don't build just to chase the tech hype; I build to turn cutting-edge innovation 
-              into purposeful, elegant execution that stands the test of scale.</p>
+            <p>Lately my focus is making LLM systems trustworthy. My latest build, EV Ops Copilot, is an agentic RAG
+              assistant that investigates in steps, cites every claim to its source, guards every database query, and
+              says "I don't know" when the data doesn't support an answer — with an evaluation suite that catches
+              regressions before they ship. I'm working toward becoming an AI architect by building depth in exactly
+              this: reliable, observable, grounded AI.</p>
           </div>
 
           <div className="about-quote hud">
