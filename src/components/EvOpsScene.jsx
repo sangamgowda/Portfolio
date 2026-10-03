@@ -9,13 +9,13 @@ const STEPS = [
   { id: 'exec', n: '3', title: 'Execute', sub: 'Guarded SQL · hybrid RAG', tone: 'amber' },
   { id: 'reflect', n: '4', title: 'Observe & Reflect', sub: 'Enough evidence? Max 3 laps', tone: 'cyan' },
   { id: 'synth', n: '5', title: 'Synthesize', sub: 'Every claim cites evidence', tone: 'cyan' },
-  { id: 'verify', n: '6', title: 'Groundedness Check', sub: 'Unsupported claims caught', tone: 'amber' }
+  { id: 'verify', n: '6', title: 'Groundedness Check', sub: 'Claims checked against sources', tone: 'amber' }
 ];
 
 const FOOTER_TEXT = [
-  'SQL checked by code, not a model',
+  'SQL validated before every run',
   'Read-only Postgres · pgvector',
-  'Gaps are named, not guessed'
+  'Citations on every claim'
 ];
 
 /* Wide layout (tablet / desktop): a two-row loop. */
