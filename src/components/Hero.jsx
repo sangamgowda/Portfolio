@@ -87,7 +87,7 @@ export default function Hero() {
         <div className="strip hud reveal">
           <div className="cell">
             <div className="k">Experience</div>
-            <div className="v">1+ Years</div>
+            <div className="v">2+ Years</div>
           </div>
           <div className="cell">
             <div className="k">Systems Built</div>
