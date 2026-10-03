@@ -578,7 +578,7 @@ h3 {
   background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-2));
   padding: 26px 10px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr 1.6fr;
 }
 
 @media (max-width: 760px) {
@@ -601,6 +601,10 @@ h3 {
 @media (max-width: 760px) {
   .strip .cell:nth-child(2n) {
     border-right: none;
+  }
+
+  .strip .cell:last-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -708,43 +712,185 @@ h3 {
   text-transform: uppercase;
 }
 
-/* ================= STACK — hover bubbles ================= */
+/* ================= STACK — fixed grid, no hover resizing ================= */
 .stack-bubbles {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   align-items: stretch;
 }
 
 @media (max-width: 900px) {
   .stack-bubbles {
-    flex-direction: column;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .stack-bubbles {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .stack-bubble {
-  flex: 1 1 0;
   min-width: 0;
+  position: relative;
+}
+
+.stack-card {
   background: var(--bg-panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 26px 22px;
-  overflow: hidden;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  transition: flex-grow .5s cubic-bezier(.4, 0, .2, 1), background .35s ease, border-color .35s ease;
+  padding: 24px 22px;
+  height: 100%;
+  outline: none;
+  transition: border-color .25s ease, background .25s ease, box-shadow .25s ease;
 }
 
-.stack-bubble.active {
-  flex-grow: 2.4;
-  border-color: var(--cyan);
-  background: linear-gradient(160deg, var(--bg-panel), var(--bg-panel-2));
-}
-
-@media (max-width: 900px) {
-  .stack-bubble.active {
-    flex-grow: 1;
+/* Desktop: cards rest as compact headlines. The hovered card swells and its neighbours
+   yield sideways while the row below slides down, so nothing is ever covered. */
+@media (hover: hover) and (pointer: fine) and (min-width: 901px) {
+  .stack-bubbles {
+    --rest: 72px;
+    --open-1: 275px;
+    --open-2: 172px;
+    --flow: .65s cubic-bezier(.22, 1, .36, 1);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: var(--rest) var(--rest);
+    align-items: start;
+    transition: grid-template-columns var(--flow), grid-template-rows var(--flow);
   }
+
+  .stack-bubble {
+    height: var(--rest);
+    transition: height var(--flow);
+  }
+
+  .stack-card {
+    height: 100%;
+    padding: 0 22px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .stack-card .bubble-head {
+    height: var(--rest);
+  }
+
+  .stack-card .p-label {
+    line-height: var(--rest);
+  }
+
+  .stack-card .chips {
+    margin-top: 0;
+    padding-bottom: 22px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .3s ease, transform .5s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .stack-bubble:hover .stack-card,
+  .stack-card:focus {
+    border-color: var(--cyan);
+    background: linear-gradient(160deg, var(--bg-panel), var(--bg-panel-2));
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .18);
+  }
+
+  .stack-bubble:hover .chips,
+  .stack-card:focus .chips {
+    opacity: 1;
+    transform: none;
+    transition-delay: .18s;
+  }
+
+  /* hovered card grows in its own row; its row-mates keep their height and give up width */
+  .stack-bubble:nth-child(-n+3):hover,
+  .stack-bubble:nth-child(-n+3):focus-within { height: var(--open-1); }
+  .stack-bubble:nth-child(n+4):hover,
+  .stack-bubble:nth-child(n+4):focus-within { height: var(--open-2); }
+
+  .stack-bubbles:has(.stack-bubble:nth-child(-n+3):is(:hover, :focus-within)) {
+    grid-template-rows: var(--open-1) var(--rest);
+  }
+  .stack-bubbles:has(.stack-bubble:nth-child(n+4):is(:hover, :focus-within)) {
+    grid-template-rows: var(--rest) var(--open-2);
+  }
+
+  .stack-bubbles:has(.stack-bubble:nth-child(3n+1):is(:hover, :focus-within)) {
+    grid-template-columns: 1.5fr .75fr .75fr;
+  }
+  .stack-bubbles:has(.stack-bubble:nth-child(3n+2):is(:hover, :focus-within)) {
+    grid-template-columns: .75fr 1.5fr .75fr;
+  }
+  .stack-bubbles:has(.stack-bubble:nth-child(3n):is(:hover, :focus-within)) {
+    grid-template-columns: .75fr .75fr 1.5fr;
+  }
+}
+
+/* Touch / narrow screens: same idea, driven by tap. Each card opens on its own and
+   pushes only the cards below it; a plus/minus marker shows it can be opened. */
+@media (max-width: 900px), (hover: none), (pointer: coarse) {
+  .stack-bubbles {
+    align-items: start;
+    gap: 12px;
+  }
+
+  .stack-card {
+    display: grid;
+    grid-template-rows: auto 0fr;
+    height: auto;
+    padding: 0 18px;
+    cursor: pointer;
+    transition: grid-template-rows .5s cubic-bezier(.22, 1, .36, 1), border-color .25s ease, background .25s ease, box-shadow .25s ease;
+  }
+
+  .stack-card .bubble-head {
+    justify-content: space-between;
+    min-height: 60px;
+  }
+
+  .stack-bubble .stack-card .chips {
+    overflow: hidden;
+    min-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .3s ease, transform .45s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .stack-bubble.is-open .stack-card {
+    grid-template-rows: auto 1fr;
+    border-color: var(--cyan);
+    background: linear-gradient(160deg, var(--bg-panel), var(--bg-panel-2));
+  }
+
+  .stack-bubble.is-open .chips {
+    opacity: 1;
+    transform: none;
+    padding-bottom: 18px;
+    transition-delay: .12s;
+  }
+
+  .bubble-toggle {
+    width: 20px;
+    height: 20px;
+    flex: none;
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: .75;
+    transition: transform .5s cubic-bezier(.22, 1, .36, 1), opacity .3s ease;
+  }
+  .stack-bubble.is-open .bubble-toggle {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 901px) {
+  .bubble-toggle { display: none; }
 }
 
 .bubble-head {
@@ -759,31 +905,13 @@ h3 {
   letter-spacing: .12em;
   color: var(--amber);
   text-transform: uppercase;
-  white-space: nowrap;
 }
 
 .stack-bubble .chips {
   display: flex;
   flex-wrap: wrap;
   gap: 9px;
-  max-height: 0;
-  opacity: 0;
-  margin-top: 0;
-  transition: max-height .5s ease, opacity .4s ease .05s, margin-top .5s ease;
-}
-
-.stack-bubble.active .chips {
-  max-height: 400px;
-  opacity: 1;
-  margin-top: 18px;
-}
-
-/* Touch / mobile: permanently open — see .stack-bubbles--touch in responsive.css */
-.stack-bubbles--touch .stack-bubble .chips {
-  max-height: none;
-  opacity: 1;
-  margin-top: 18px;
-  transition: none;
+  margin-top: 16px;
 }
 
 .chip {
@@ -794,11 +922,10 @@ h3 {
   border: 1px solid var(--line-strong);
   color: var(--text-mute);
   background: rgba(255, 255, 255, 0.02);
-  transition: all .2s ease;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  white-space: nowrap;
 }
 
 .chip-icon {
@@ -1830,10 +1957,14 @@ footer {
   color: var(--text);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1480px) {
+  /* side dock needs ~100px of free gutter; hide it before it overlaps content */
   .dock {
-    display:none;
+    display: none;
   }
+}
+
+@media (max-width: 1024px) {
 
   .dock .rail {
     width: 1px;

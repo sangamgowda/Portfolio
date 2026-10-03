@@ -9,17 +9,17 @@ export default function About() {
 
         <div className="about-grid reveal">
           <div className="about-text">
-            <p>I'm an AI engineer who likes building the whole thing, from the model to the pipeline to the problem
-              it's meant to solve. At EAGE Technologies I worked as an individual contributor in a small team, taking
-              forecasting, computer vision, and IoT systems from a blank page to working prototypes and pilots, often
-              with no historical data and no senior AI guidance to lean on. That taught me to learn fast, design
-              carefully, and be honest about what a system can and can't do yet.</p>
+            <p>I'm an engineer who learns by building. When I take on a new problem, I try to begin with questions
+              rather than tools. Who is this for? What would a good answer look like? And what happens if it's wrong?
+              Most of my work so far has been in small teams where I had to figure things out on my own, which taught
+              me to stay with a problem from the first sketch to the last fix, and to be comfortable starting from
+              zero.</p>
 
-            <p>Lately my focus is making LLM systems trustworthy. My latest build, EV Ops Copilot, is an agentic RAG
-              assistant that investigates in steps, cites every claim to its source, guards every database query, and
-              says "I don't know" when the data doesn't support an answer — with an evaluation suite that catches
-              regressions before they ship. I'm working toward becoming an AI architect by building depth in exactly
-              this: reliable, observable, grounded AI.</p>
+            <p>What I'd like to build is AI that people can rely on in everyday use, not just in a demo. I try to be
+              clear about what's working and what isn't, explain things simply, and keep improving something until it
+              holds up. I'm still early in my career, and I know where I need to grow, with more production experience
+              and larger, more complex systems. That's the direction I'm working toward, one build at a time, with the
+              long-term goal of designing AI systems end to end as an architect.</p>
           </div>
 
           <div className="about-quote hud">

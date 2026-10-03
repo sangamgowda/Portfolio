@@ -1,0 +1,115 @@
+/* ---------- EV Ops Copilot flow scene ---------- */
+.evops-scene {
+  --ev-cyan: var(--cyan);
+  --ev-amber: var(--amber);
+  position: relative;
+  margin-top: 26px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 90% 4%, var(--amber-soft), transparent 45%),
+    radial-gradient(ellipse at 6% 100%, var(--cyan-soft), transparent 60%),
+    var(--bg);
+  overflow: hidden;
+  padding: 44px 2% 18px;
+}
+
+.evops-hint {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: clamp(11px, 2.4vw, 13px);
+  letter-spacing: .06em;
+  color: var(--text-mute);
+  pointer-events: none;
+  padding: 0 4%;
+}
+
+.evops-scroll {
+  overflow-x: auto;
+}
+
+.evops-svg {
+  display: block;
+  width: 100%;
+  min-width: 600px;
+  max-width: 900px;
+  margin: 0 auto;
+  height: auto;
+  font-family: var(--body);
+}
+
+/* links */
+.ev-links path {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 2;
+}
+.ev-arrow-head { fill: var(--text-dim); }
+.ev-arrow-head.loop { fill: var(--ev-amber); }
+
+.ev-loopback {
+  fill: none;
+  stroke: var(--ev-amber);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  animation: ev-dash 1.2s linear infinite;
+}
+@keyframes ev-dash { to { stroke-dashoffset: -11; } }
+
+.ev-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  fill: var(--text-mute);
+  letter-spacing: .04em;
+}
+.ev-label.loop { fill: var(--ev-amber); }
+
+/* nodes */
+.ev-node rect {
+  fill: var(--bg-panel);
+  stroke: var(--line-strong);
+  stroke-width: 1.5;
+  transition: stroke .3s, filter .3s;
+}
+.ev-node.amber rect { stroke: color-mix(in srgb, var(--ev-amber) 45%, var(--line-strong)); }
+.ev-badge { fill: var(--cyan-soft); stroke: var(--ev-cyan); stroke-width: 1.2; }
+.ev-node.amber .ev-badge { fill: var(--amber-soft); stroke: var(--ev-amber); }
+.ev-badge-n { font-family: var(--mono); font-size: 11px; font-weight: 600; fill: var(--text); }
+.ev-title { font-family: var(--disp); font-size: 15.5px; font-weight: 600; fill: var(--text); }
+.ev-sub { font-size: 11px; fill: var(--text-mute); }
+
+.ev-node { animation: ev-glow var(--loop, 12s) linear infinite; animation-fill-mode: backwards; }
+@keyframes ev-glow {
+  0%, 14%, 100% { filter: none; }
+  2%, 10% { filter: drop-shadow(0 0 10px var(--ev-cyan)); }
+}
+.ev-node.amber { --ev-cyan: var(--ev-amber); }
+
+/* packet */
+.ev-track { fill: none; stroke: none; }
+.ev-packet { fill: var(--text); }
+.ev-packet-glow { fill: var(--ev-cyan); opacity: .35; }
+
+/* footer pills */
+.ev-pill rect { fill: var(--bg-panel); stroke: var(--line-strong); stroke-width: 1; }
+.ev-pill circle { fill: var(--ev-cyan); }
+.ev-pill text { font-size: 11.5px; fill: var(--text-mute); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-node, .ev-loopback { animation: none; }
+  .ev-packet, .ev-packet-glow { display: none; }
+}
+
+/* phones: the diagram switches to a single-column layout and fills the width */
+.evops-svg.tall {
+  min-width: 0;
+  max-width: 420px;
+}
+@media (max-width: 640px) {
+  .evops-scene { padding: 56px 10px 14px; }
+  .evops-hint { font-size: 10.5px; letter-spacing: .03em; line-height: 1.5; padding: 0 12px; }
+}

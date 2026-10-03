@@ -129,10 +129,6 @@ export default function Link() {
                 <div className="v">sangamgowda64@gmail.com</div>
               </div>
               <div className="c-card">
-                <div className="k">Phone</div>
-                <div className="v">+91 90358 36305</div>
-              </div>
-              <div className="c-card">
                 <div className="k">Location</div>
                 <div className="v">Bengaluru, Karnataka</div>
               </div>

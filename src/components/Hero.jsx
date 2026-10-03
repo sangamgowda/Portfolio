@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 const PHRASES = [
   'Builds AI systems end to end.',
   'ML -> DL -> LLMs -> Agents.',
-  'Agentic RAG, grounded and evaluated.',
+  'Agentic RAG, grounded in real data.',
   'Research ideas into working prototypes.'
 ];
 
@@ -62,7 +62,7 @@ export default function Hero() {
             <div className="stat-row">
               <div className="stat">
                 <div className="k">Focus</div>
-                <div className="v">AI Solution Design · Agentic Systems · LLM Evaluation</div>
+                <div className="v">AI Solution Design · Applied ML · Agentic Systems</div>
               </div>
               <div className="stat">
                 <div className="k">Base</div>
@@ -94,12 +94,8 @@ export default function Hero() {
             <div className="v">4</div>
           </div>
           <div className="cell">
-            <div className="k">Core Stack</div>
-            <div className="v">LLM Agents · RAG · Evals · CV</div>
-          </div>
-          <div className="cell">
-            <div className="k">Domains</div>
-            <div className="v">GenAI · Vision · Forecasting · EV Ops</div>
+            <div className="k">Focus Areas</div>
+            <div className="v">LLM Agents · RAG · Computer Vision · Forecasting</div>
           </div>
         </div>
       </div>

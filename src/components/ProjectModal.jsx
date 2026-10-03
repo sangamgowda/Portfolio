@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import SolarScene from './SolarScene.jsx';
+import EvOpsScene from './EvOpsScene.jsx';
 
 export default function ProjectModal({ project, onClose }) {
   const open = Boolean(project);
@@ -39,7 +40,8 @@ export default function ProjectModal({ project, onClose }) {
               {project.tagline && <p className="modal-tagline">{project.tagline}</p>}
             </div>
 
-            {project.scene && <SolarScene project={project} />}
+            {project.scene === 'solar' && <SolarScene project={project} />}
+            {project.scene === 'evops' && <EvOpsScene />}
 
             {project.modalTags.length > 0 && (
               <div className="modal-feature-row">
