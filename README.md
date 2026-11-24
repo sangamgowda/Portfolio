@@ -1,4 +1,4 @@
-# Sangam — AI Software Engineer Portfolio (Production-Grade)
+# Sangam — AI Engineer Portfolio
 
 A premium, interactive, and responsive developer portfolio designed with a futuristic HUD (Heads-Up Display) aesthetic. This project uses **Vite** as a modern bundling and asset-optimization workflow, following standard frontend engineering practices.
 

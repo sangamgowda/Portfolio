@@ -4,7 +4,7 @@ const PHRASES = [
   'Builds AI systems end to end.',
   'ML -> DL -> LLMs -> Agents.',
   'Agentic RAG, grounded in real data.',
-  'Research ideas into working prototypes.'
+  'Cited, decision-ready answers from operational data.'
 ];
 
 function useTypewriter() {
@@ -87,7 +87,7 @@ export default function Hero() {
         <div className="strip hud reveal">
           <div className="cell">
             <div className="k">Experience</div>
-            <div className="v">2+ Years</div>
+            <div className="v">2 Years</div>
           </div>
           <div className="cell">
             <div className="k">Systems Built</div>
@@ -95,7 +95,7 @@ export default function Hero() {
           </div>
           <div className="cell">
             <div className="k">Focus Areas</div>
-            <div className="v">LLM Agents · RAG · LLM Evals · Forecasting · CV</div>
+            <div className="v">LLM Agents · RAG · LLM Evaluation · Forecasting · CV</div>
           </div>
         </div>
       </div>

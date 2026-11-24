@@ -1,80 +1,59 @@
 export const stackGroups = [
   {
-    label: 'LLM & Agentic Engineering',
+    label: 'GenAI & Agentic AI',
     chips: [
-      'Agentic Pipelines',
-      'LangChain',
+      'LLMs',
+      'RAG',
+      'Agentic AI',
       'LangGraph',
+      'LangChain',
       'MCP',
       'Tool Calling',
-      'Function Calling',
-      'RAG',
-      'Hybrid Search & Re-ranking',
-      'Prompt Engineering',
-      'FAISS',
-      'pgvector'
+      'Prompt Engineering'
     ]
   },
   {
-    label: 'Evaluation & Observability',
+    label: 'Retrieval & LLM Evaluation',
     chips: [
-      'LLM-as-Judge',
+      'Hybrid Search (BM25 + Vector)',
+      'Semantic Search',
+      'Re-ranking',
+      'Embeddings',
+      'pgvector',
       'Golden Datasets',
+      'LLM-as-Judge',
       'Regression Testing',
-      'Groundedness & Hallucination Checks',
-      'Langfuse'
+      'Observability (Langfuse)'
     ]
   },
   {
-    label: 'Tools & Environments',
-    chips: [
-      'Cursor',
-      'Claude Code',
-      'Antigravity',
-      'Hermes',
-      { label: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
-      { label: 'FastAPI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg' },
-      { label: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' }
-    ]
-  },
-  {
-    label: 'Software & Systems',
-    chips: [
-      { label: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
-      { label: 'ReactJS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
-      'SQL',
-      { label: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' }
-    ]
-  },
-  {
-    label: 'Cloud (Basics)',
-    chips: [
-      { label: 'AWS S3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
-      { label: 'AWS EC2', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' }
-    ]
-  },
-  {
-    label: 'AI & ML',
+    label: 'Machine Learning & Data Science',
     chips: [
       'Machine Learning',
       'Deep Learning',
-      'Computer Vision',
-      'CNNs',
-      'Transformers',
       'Time-Series Forecasting',
-      'Statistics & Data Science',
       'LightGBM',
       'LSTM',
-      { label: 'OpenCV', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg' },
+      'Computer Vision',
       'YOLOv8'
+    ]
+  },
+  {
+    label: 'Programming & Cloud',
+    chips: [
+      { label: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+      'SQL',
+      { label: 'FastAPI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg' },
+      { label: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+      { label: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+      'AWS basics (EC2, S3)'
     ]
   },
   {
     label: 'Delivery & Collaboration',
     chips: [
-      'Technical Demos',
       'Requirements Gathering',
-      'Agile/Scrum',
+      'Technical Demos',
       'Stakeholder Communication'
     ]
   }

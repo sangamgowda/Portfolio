@@ -13,12 +13,11 @@ export default function Work() {
             <div className="tl-role">AI Software Engineer</div>
             <div className="tl-co">EAGE Technologies India Pvt. Ltd. · Bengaluru, KA</div>
             <ul className="tl-list">
-              <li>Architected an agentic decision pipeline integrating LightGBM/LSTM forecasts with rule-based risk logic and LLM function calling, generating operational directives and automated risk alerts for solar assets.</li>
-              <li>Built a LangChain reasoning pipeline that queries forecast data stored in a database and answers user questions with structured JSON outputs.</li>
-              <li>Built and benchmarked LightGBM and LSTM forecasting models for solar power output using 12 years of location-based historical data, reaching evaluation scores of 89% and 80% (R²) respectively, and designed retraining triggers and performance-ratio-based drift monitoring.</li>
-              <li>Designed an IoT-to-cloud Agri-Soil Intelligence engine under zero-historical-data constraints, engineering cold-start threshold logic and location-based climate API pipelines for 2 pilot locations.</li>
-              <li>Presented operations workflows, technical specifications, and pilot demos to stakeholders and engineering leads.</li>
-              <li>Built a real-time computer vision pipeline (YOLOv8, InsightFace, FAISS) for face detection, distance estimation, and object detection as an independent software pipeline, connected to STM32 hardware to complete the end-to-end hardware-software system for a defense demo application.</li>
+              <li>Built an LLM decision layer for a solar forecasting platform: LangChain function calling over LightGBM/LSTM forecasts and rule-based risk logic, returning structured JSON operational directives and risk alerts.</li>
+              <li>Trained LightGBM and LSTM solar forecasters on 12 years of location-based data (R-squared 0.89 / 0.80, time-based split), with performance-ratio drift monitoring and retraining triggers.</li>
+              <li>Built a real-time computer vision pipeline (YOLOv8, InsightFace, FAISS) as a standalone system connected to STM32 hardware, together forming an end-to-end defense demo application.</li>
+              <li>Designed an Agri-Soil intelligence engine for IoT sensor data with no historical baseline, using cold-start threshold logic and climate API pipelines across 2 pilot locations.</li>
+              <li>Presented project benefits, technical specifications and pilot demos to the business team to show each project's value.</li>
             </ul>
           </div>
 
