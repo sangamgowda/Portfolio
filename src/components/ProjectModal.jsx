@@ -68,7 +68,9 @@ export default function ProjectModal({ project, onClose }) {
               )}
 
               {project.repo && (
-                <a className="btn primary" href={project.repo} target="_blank" rel="noopener">View on GitHub ↗</a>
+                <div className="modal-actions">
+                  <a className="btn primary" href={project.repo} target="_blank" rel="noopener">View on GitHub ↗</a>
+                </div>
               )}
             </div>
           </div>

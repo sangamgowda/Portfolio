@@ -63,7 +63,7 @@ video {
   .chip {
     font-size: clamp(12px, 3.2vw, 13px);
     white-space: normal;
-    text-align: center;
+    text-align: left;
   }
 }
 
@@ -219,8 +219,8 @@ video {
     font-size: 13.5px;
   }
 
-  .stack-bubble {
-    padding: 22px 5%;
+  .stack-card {
+    padding: 0 16px;
   }
 }
 
