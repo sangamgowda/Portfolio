@@ -1,21 +1,5 @@
 export const stackGroups = [
   {
-    label: 'AI & ML',
-    chips: [
-      'Machine Learning',
-      'Deep Learning',
-      'Computer Vision',
-      'CNNs',
-      'Transformers',
-      'Time-Series Forecasting',
-      'Statistics & Data Science',
-      'LightGBM',
-      'LSTM',
-      { label: 'OpenCV', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg' },
-      'YOLOv8'
-    ]
-  },
-  {
     label: 'LLM & Agentic Engineering',
     chips: [
       'Agentic Pipelines',
@@ -27,7 +11,6 @@ export const stackGroups = [
       'RAG',
       'Hybrid Search & Re-ranking',
       'Prompt Engineering',
-      'LLM Guardrails',
       'FAISS',
       'pgvector'
     ]
@@ -55,21 +38,44 @@ export const stackGroups = [
     ]
   },
   {
-    label: 'Delivery & Collaboration',
-    chips: [
-      'Technical Demos',
-      'Requirements Gathering',
-      'Agile/Scrum',
-      'Stakeholder Communication'
-    ]
-  },
-  {
     label: 'Software & Systems',
     chips: [
       { label: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
       { label: 'ReactJS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
       'SQL',
       { label: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' }
+    ]
+  },
+  {
+    label: 'Cloud (Basics)',
+    chips: [
+      { label: 'AWS S3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
+      { label: 'AWS EC2', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' }
+    ]
+  },
+  {
+    label: 'AI & ML',
+    chips: [
+      'Machine Learning',
+      'Deep Learning',
+      'Computer Vision',
+      'CNNs',
+      'Transformers',
+      'Time-Series Forecasting',
+      'Statistics & Data Science',
+      'LightGBM',
+      'LSTM',
+      { label: 'OpenCV', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg' },
+      'YOLOv8'
+    ]
+  },
+  {
+    label: 'Delivery & Collaboration',
+    chips: [
+      'Technical Demos',
+      'Requirements Gathering',
+      'Agile/Scrum',
+      'Stakeholder Communication'
     ]
   }
 ];

@@ -62,7 +62,7 @@ export default function Hero() {
             <div className="stat-row">
               <div className="stat">
                 <div className="k">Focus</div>
-                <div className="v">AI Solution Design · Applied ML · Agentic Systems</div>
+                <div className="v">GenAI Engineering · Agentic RAG · LLM Evaluation</div>
               </div>
               <div className="stat">
                 <div className="k">Base</div>
@@ -95,7 +95,7 @@ export default function Hero() {
           </div>
           <div className="cell">
             <div className="k">Focus Areas</div>
-            <div className="v">LLM Agents · RAG · Computer Vision · Forecasting</div>
+            <div className="v">LLM Agents · RAG · LLM Evals · Forecasting · CV</div>
           </div>
         </div>
       </div>

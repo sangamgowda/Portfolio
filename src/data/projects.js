@@ -33,13 +33,13 @@ export const projects = [
     hasIso: false,
     body: [
       'An agricultural intelligence layer that ingests readings from GSM-connected IoT sensors deployed in the field — moisture, temperature, and other soil parameters — building a live profile for each pilot plot from the first reading.',
-      'A threshold-based rule engine, layered with location and climate APIs, flags soil health issues, recommends crops, and estimates disease risk — turning raw sensor signal into a plain, actionable read across two active pilot locations.'
+      'A threshold-based rule engine, layered with location and climate APIs, flags soil health issues, recommends crops, and estimates disease risk — turning raw sensor signal into a plain, actionable read for two pilot locations.'
     ],
     points: [
       { k: 'IoT Ingestion', v: 'Streams GSM-based sensor readings from distributed field nodes into a live soil profile.' },
       { k: 'Threshold Engine', v: 'Rule-based logic flags health issues and recommends crops from live thresholds.' },
       { k: 'Climate Risk', v: 'Overlays location and climate APIs to assess drought, water-logging and disease risk.' },
-      { k: 'Pilot Deployment', v: 'Running across two pilot locations.' }
+      { k: 'Pilot Scope', v: 'Designed for two pilot locations, starting with no historical data.' }
     ]
   },
   {
@@ -48,13 +48,13 @@ export const projects = [
     group: 'work',
     title: 'Defense Surveillance',
     tagline: 'Vision hardened for the field.',
-    desc: 'Real-time computer vision — face detection, distance estimation & object detection — built as a standalone software pipeline with STM32 hardware connected, for a client defense application.',
+    desc: 'Real-time computer vision — face detection, distance estimation & object detection — built as a standalone software pipeline with STM32 hardware connected, for a defense demo application.',
     tags: ['Computer Vision', 'STM32 Integration', 'IR Imaging'],
     modalTags: ['YOLOv8', 'InsightFace', 'FAISS', 'STM32', 'IR Detection'],
     eyebrow: 'BUILD / 03 · WORK',
     hasIso: false,
     body: [
-      'A real-time computer vision system built for a client defense application, integrating pretrained YOLOv8 for object and face detection, InsightFace for facial embeddings, and FAISS for fast similarity search — running face detection, distance estimation, and object detection, including against IR imagery, in a single pipeline.',
+      'A real-time computer vision system built as a defense demo application, integrating pretrained YOLOv8 for object and face detection, InsightFace for facial embeddings, and FAISS for fast similarity search — running face detection, distance estimation, and object detection, including against IR imagery, in a single pipeline.',
       'The vision stack is engineered as an independent software pipeline, with STM32 embedded hardware connected to the system to complete the end-to-end hardware-software pipeline.'
     ],
     points: [
@@ -84,7 +84,7 @@ export const projects = [
       { k: 'Grounded Answers', v: 'Each claim links to the query or document passage behind it, and partial answers are labelled.' },
       { k: 'SQL Validation', v: 'AST validation, a cost gate, and a read-only role with a timeout on every generated query.' },
       { k: 'Evaluation', v: 'A golden dataset with hallucination test cases, LLM-as-judge scoring, and regression comparison between runs.' },
-      { k: 'Reliability & Cost', v: 'Model tiering with a fallback behind a circuit breaker, rate-paced calls, Langfuse tracing, and Docker/CI deployment.' }
+      { k: 'Reliability & Cost', v: 'Model tiering with a fallback behind a circuit breaker, rate-paced calls, Langfuse tracing, and Docker packaging.' }
     ]
   }
 ];
